@@ -17,11 +17,28 @@ jobs:
   job2:
     name: job2
     runs-on: ubuntu-latest
+    needs: job1
     steps:
       - name: Checking the hostname for Runner
         run: hostname
       - name: Running multiple commands
         run: |
           echo "Hi from M. Charles"
-          echo "current time is `date`"
+          echo "Current time is `date`"
           sleep 20
+
+  job3:
+    name: job3
+    runs-on: ubuntu-latest
+    needs: job2
+    steps:
+      - name: Job with Single dependency
+        run: sleep 20
+
+  job4:
+    name: job4
+    runs-on: ubuntu-latest
+    needs: job3
+    steps:
+      - name: Job with multiple dependencies
+        run: sleep 10
