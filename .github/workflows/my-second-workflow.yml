@@ -5,7 +5,7 @@ on:
 
 jobs:
   job1:
-    name: JOB1
+    name: job1
     runs-on: ubuntu-latest
     steps:
       - name: Step 1
