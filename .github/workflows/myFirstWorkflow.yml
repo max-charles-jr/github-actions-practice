@@ -3,11 +3,11 @@ name: my-first-workflow
 on:
   schedule:
     - cron: "1 * 1 * *"
-  push:
-    branches:
-      - dev
-      - 'feature-*'
-      - main
+  # push:
+  #   branches:
+  #     - dev
+  #     - 'feature-*'
+  #     - main
       
 jobs:
   job1:
