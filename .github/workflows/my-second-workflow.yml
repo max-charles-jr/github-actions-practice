@@ -1,6 +1,13 @@
 name: my-second-workflow
 # To get a trigger on every push in this repo in any branch
 on:
+  schedule:
+    - cron: "1 * 1 * *"
+  push:
+    branches:
+      - dev
+      - 'feature-*'
+      - main
   workflow_dispatch:
   
 jobs:
