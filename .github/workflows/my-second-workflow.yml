@@ -1,6 +1,14 @@
 name: my-second-workflow
 # To get a trigger on every push in this repo in any branch
 on:
+  schedule:
+    - cron: "1 * 1 * *"
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
   workflow_dispatch:
   
 jobs:
@@ -63,53 +71,6 @@ jobs:
       - name: checking current directory post download
         run: |
           pwd
-          ls -ltr 
-
-  job3:
-    name: job3
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: checking current directory
-        run: |
-          pwd
           ls -ltr
-      - name: Download directory
-        uses: actions/download-artifact@v7.0.0
-        with:
-          name: directory_artifacts
-      - name: checking current directory post download
-        run: |
-          pwd
-          ls -ltr  
-
-  job4:
-    name: job4
-    needs: job1
-    runs-on: ubuntu-latest
-    steps:
-      - name: Creating custom folder for download
-        run: |
-          mkdir -p single_file
-          mkdir -p download_directory
-      - name: checking current directory
-        run: |
-          pwd
-          ls -ltr
-      - name: Download single file artifact
-        uses: actions/download-artifact@v7.0.0
-        with:
-          name: single_file
-          path: single_file
-      - name: Download directory
-        uses: actions/download-artifact@v7.0.0
-        with:
-          name: directory_artifacts
-          path: download_directory
-      - name: checking current directory post download
-        run: |
-          pwd
-          echo "CHECKING SINGLE FILE DIRECTORY"
-          ls -ltr single_file
-          echo "CHECKING DIRECTORY ARTIFACTS"
-          ls -ltr download_directory
+      - name: Stop for PR Demos
+        run: exit 0

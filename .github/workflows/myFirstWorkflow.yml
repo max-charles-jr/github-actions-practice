@@ -1,10 +1,14 @@
 name: my-first-workflow
 # To get a trigger on every push in this repo on any branch
-on: 
+on:
   schedule:
     - cron: "1 * 1 * *"
-  workflow_dispatch:
-  
+  # push:
+  #   branches:
+  #     - dev
+  #     - 'feature-*'
+  #     - main
+      
 jobs:
   job1:
     name: job1
